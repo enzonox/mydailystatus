@@ -7,7 +7,7 @@ const Header = () => {
             <h1>
                 <img 
                     className="h-24 mx-auto py-4"
-                    src='/logo.png'  
+                    src='/Logo.png'  
                     alt='Olá Mundo!' 
                     height='60' 
                 />
