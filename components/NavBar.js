@@ -1,5 +1,6 @@
 import React from 'react';
 import Link from 'next/link';
+import { useAuth } from '../lib/AuthContext'
 
 //esse componente recebe a propriedade href com o nome do link que é o children
 const NavLink = ({ href, children }) => {
@@ -11,11 +12,14 @@ const NavLink = ({ href, children }) => {
 }
 
 const NavBar = () => {
+    const auth = useAuth()
     return (
         <div className="bg-gray-500 py-4 text-center">
             <NavLink href="/sobre">Sobre</NavLink>
-            <NavLink href="/cadastro">Cadastro</NavLink>
-            <NavLink href="/entrar">Entrar</NavLink>
+            { !auth.isAuth && <NavLink href="/cadastro">Cadastro</NavLink>}
+            { !auth.isAuth && <NavLink href="/entrar">Entrar</NavLink>}
+            {auth.isAuth && <NavLink href="/app">Ver Status</NavLink>}
+            {auth.isAuth && <NavLink href="/api/logout">{auth.user.given_name} Sair</NavLink>}
         </div>
     )
 }
