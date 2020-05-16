@@ -1,6 +1,3 @@
-# mydailystatus
-Web app baseado no projeto do DevPleno - Fullstack Lab
-
 <h3 align="center">
 <img src="./public/Logo.png">
 </h3>
