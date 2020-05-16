@@ -44,17 +44,21 @@ const CreateStatus = () => {
 
     const save = async () => {
         await axios.post('api/save-status', dados)
+        await router.push('/app')
     }
     return (
         <div>
             <h1>Create Status</h1>
             <label className='block'>
-            <input type='radio' name='status' value='bem' onClick={onStatusChannge} />{' '}Estou bem e sem sintomas.</label>
-            <label className='block'><input type='radio' name='status' value='gripe' onClick={onStatusChannge} />{' '}Estou com sintomas de gripe</label>
-            <label className='block'><input type='radio' name='status' value='covid' onClick={onStatusChannge} />{' '}Estou com sintomas de COVID</label>
-            Sua Posição atual: {JSON.stringify(dados)}
-            <button onClick={getMyLocation}>Pegar minha localização</button>
-            <button onClick={save}>Salvar meu status</button>
+            <input type='radio' name='status' value='Nenhum sintoma' onClick={onStatusChannge} />{' '}Estou bem e sem sintomas.</label>
+            <label className='block'><input type='radio' name='status' value='Gripe' onClick={onStatusChannge} />{' '}Estou com sintomas de gripe</label>
+            <label className='block'><input type='radio' name='status' value='Febre' onClick={onStatusChannge} />{' '}Estou com Febre</label>
+            <label className='block'><input type='radio' name='status' value='Gripe e Febre' onClick={onStatusChannge} />{' '}Estou com Febre e sintomas de gripe</label>
+            <label className='block'><input type='radio' name='status' value='Covid' onClick={onStatusChannge} />{' '}Estou com sintomas de COVID</label>
+            Posição atual: {dados.coords.lat ? 'Encontrada' : 'Não encontrada, clique no botão abaixo'}<br/>
+            {/* Sua Posição atual: {JSON.stringify(dados)}*/}
+            <button className='rounded bg-green-500 font-bold shadow-xl hover:shadow block w-1/4 text-center mx-left text-white' onClick={getMyLocation}>Pegar minha localização</button>
+            <button type='submit' onClick={save} className='rounded bg-pink-500 font-bold shadow-xl hover:shadow block w-1/4 text-center mx-left text-white'>Salvar meu status</button>
         </div>
     )
 }

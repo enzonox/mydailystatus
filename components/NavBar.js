@@ -15,10 +15,11 @@ const NavBar = () => {
     const auth = useAuth()
     return (
         <div className="bg-gray-500 py-4 text-center">
+            <NavLink href="/">Home</NavLink>
             <NavLink href="/sobre">Sobre</NavLink>
-            { !auth.isAuth && <NavLink href="/cadastro">Cadastro</NavLink>}
-            { !auth.isAuth && <NavLink href="/entrar">Entrar</NavLink>}
+            { !auth.isAuth && <NavLink href="/api/login">Entrar</NavLink>}
             {auth.isAuth && <NavLink href="/app">Ver Status</NavLink>}
+            <NavLink href="https://www.linkedin.com/in/enzoleça/">Linkedin do Autor</NavLink>
             {auth.isAuth && <NavLink href="/api/logout">{auth.user.given_name} Sair</NavLink>}
         </div>
     )
